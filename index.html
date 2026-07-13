@@ -298,13 +298,28 @@
   .poc-name{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:.92rem;color:var(--blue-deep)}
 
   /* ---------- MOTHER'S AFFIRMATION ---------- */
+  .affirm-prompt{
+    font-family:"Helvetica Neue",Arial,sans-serif;font-size:.9rem;color:#fff;opacity:.92;
+    margin:24px 0 10px;font-weight:600;
+  }
   .affirm-btn{
     display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;
     font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:.92rem;color:#fff;
     background:linear-gradient(120deg,var(--pink-deep),var(--blue));
-    padding:14px 26px;border-radius:40px;margin-top:26px;
+    padding:14px 26px;border-radius:40px;
     box-shadow:0 6px 20px rgba(224,85,154,.32);transition:transform .16s,box-shadow .16s;
+    animation:affirmPulse 2.4s ease-in-out infinite;
   }
+  .affirm-btn.tapped{animation:none}
+  @keyframes affirmPulse{
+    0%,100%{box-shadow:0 6px 20px rgba(224,85,154,.32);transform:scale(1)}
+    50%{box-shadow:0 8px 28px rgba(244,169,200,.6);transform:scale(1.035)}
+  }
+  .affirm-hint{
+    font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;
+    background:rgba(255,255,255,.28);padding:3px 9px;border-radius:20px;
+  }
+  .affirm-btn.tapped .affirm-hint{display:none}
   .affirm-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(224,85,154,.4)}
   .affirm-btn:active{transform:translateY(0) scale(.98)}
   .affirm-box{
@@ -420,7 +435,8 @@
     </div>
     <div class="countdown" id="countdown"></div>
     <div>
-      <button class="affirm-btn" id="affirm-btn">💗 Mother's Affirmation</button>
+      <p class="affirm-prompt">Tap to catch some shine, Mother — then pass it on ✨🙌🏾</p>
+      <button class="affirm-btn" id="affirm-btn">✨ Mother's Affirmation <span class="affirm-hint">spread the shine</span></button>
       <div class="affirm-box" id="affirm-box"></div>
     </div>
   </div>
@@ -1188,10 +1204,11 @@ renderLists();
     return affirmations[i];
   }
   btn.addEventListener("click", ()=>{
+    btn.classList.add("tapped"); // stop the pulse & hide the hint once they've discovered it
     box.classList.remove("show");
     // brief fade for a fresh feel on each click
     setTimeout(()=>{
-      box.innerHTML = '<span class="quote">"'+pick()+'"</span><span class="tag">For you, Mother 💗💙</span>';
+      box.innerHTML = '<span class="quote">"'+pick()+'"</span><span class="tag">Shine on, Mother 💗💙</span>';
       box.classList.add("show");
     }, 120);
   });
