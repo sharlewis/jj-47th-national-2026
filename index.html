@@ -106,6 +106,13 @@
   .countdown div:last-child{border-right:none}
   .countdown .n{font-size:1.5rem;font-weight:700;display:block;color:#fff}
   .countdown .l{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
+  .countdown a.pc-inline{
+    display:flex;align-items:center;text-decoration:none;
+    padding:10px 16px;color:#fff;font-weight:700;font-size:.82rem;
+    background:linear-gradient(135deg,var(--pink-deep),var(--blue));
+    letter-spacing:.02em;transition:filter .18s;
+  }
+  .countdown a.pc-inline:hover{filter:brightness(1.08)}
 
   .chapter-logo{
     background:#fff;border-radius:50%;padding:0;display:inline-block;overflow:hidden;
@@ -454,6 +461,34 @@
   .info-row .what a:hover{text-decoration:underline}
   @media(max-width:520px){.info-row{flex-direction:column;gap:3px}.info-row .when{min-width:0}}
 
+  /* ---------- PHOTO CIRCLE ---------- */
+  .photo-circle{
+    border:1.5px solid var(--pink);border-radius:16px;
+    background:linear-gradient(135deg,#fde3ef,#dce9fb);
+    padding:20px 22px;margin-bottom:24px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .photo-circle h4{
+    font-family:"Helvetica Neue",Arial,sans-serif;font-size:1.05rem;font-weight:800;
+    color:var(--blue-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .photo-circle p{font-size:.92rem;color:#3d4757;line-height:1.55;margin-bottom:14px}
+  .photo-circle p:last-of-type{margin-bottom:0}
+  .photo-circle .pc-cta{
+    display:block;text-align:center;text-decoration:none;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:.95rem;
+    color:#fff;background:linear-gradient(135deg,var(--pink-deep),var(--blue));
+    padding:15px;border-radius:30px;margin:4px 0 16px;
+    box-shadow:0 4px 16px rgba(224,85,154,.28);transition:transform .18s,box-shadow .18s;
+  }
+  .photo-circle .pc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,85,154,.4)}
+  .photo-circle .pc-label{
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+    color:var(--pink-deep);margin-bottom:10px}
+  .pc-ideas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
+  .pc-ideas span{
+    background:var(--white);border:1px solid var(--pink);border-radius:20px;
+    padding:7px 13px;font-size:.85rem;color:#3d4757;line-height:1.3}
+
   @media(max-width:560px){
     .hero{padding:40px 0 34px}
     .day-head{gap:12px;padding:14px 14px}
@@ -659,6 +694,14 @@
       🌐 Open the Official Event Website →
     </a>
 
+    <div class="photo-circle">
+      <h4>📸 Our Eastern Region Photo Circle</h4>
+      <p>Let's capture the whole week together! Join our Eastern Region Photo Circle and share your photos so we build one shared album of the memories we make in Baltimore. Snap freely, post often, and enjoy everyone else's shots too.</p>
+      <a class="pc-cta" href="https://join.photocircleapp.com/549FJNGZKX" target="_blank" rel="noopener">
+        📷 Join the Photo Circle →
+      </a>
+    </div>
+
     <div class="info-block">
       <h4>🙌🏾 Volunteer Shifts</h4>
       <div class="info-row">
@@ -794,7 +837,7 @@ const Store = (function(){
     const d = Math.floor(diff/86400000);
     const h = Math.floor(diff%86400000/3600000);
     const m = Math.floor(diff%3600000/60000);
-    if(diff<=0){ el.innerHTML = '<div><span class="n">🎉</span><span class="l">We\'re Here!</span></div>'; return; }
+    if(diff<=0){ el.innerHTML = '<div><span class="n">🎉</span><span class="l">We\'re Here!</span></div><a class="pc-inline" href="https://join.photocircleapp.com/549FJNGZKX" target="_blank" rel="noopener">📸 Join the Photo Circle →</a>'; return; }
     el.innerHTML =
       '<div><span class="n">'+d+'</span><span class="l">Days</span></div>'+
       '<div><span class="n">'+h+'</span><span class="l">Hours</span></div>'+
@@ -960,12 +1003,12 @@ const packing = {
   moms:[
     {cat:"Daytime & Plenary Outfits", items:[
       ["Powerful Powder Blue outfit","Tue · regional feature day"],
-      ["White Ceremonial attire","Wed · Plenary I (formal white)"],
+      ["White Ceremonial attire","Wed · Plenary I (formal white) — with white stockings"],
       ["Royal Blue or Magenta outfit","Thu · Active Mothers"],
       ["Purple outfit","Thu · Associate Mothers only"],
       ["Gray outfit with a pop of pink","Fri · Programming Luncheon"],
       ["Green, Soft Lilac & Yellow outfit","Sat · Regional Breakfast"],
-      ["White Ceremonial / Sunday's Best","Sun · Memorial & Gospel Breakfast"]
+      ["White Ceremonial / Sunday's Best","Sun · Memorial & Gospel Breakfast — with white stockings"]
     ]},
     {cat:"Evening & Themed", items:[
       ["90s House Party outfit","Wed · bright colors / windbreakers / hip-hop"],
@@ -1003,11 +1046,11 @@ const packing = {
   associates:[
     {cat:"Daytime & Program Outfits", items:[
       ["Powerful Powder Blue outfit","Tue · regional feature day"],
-      ["White Ceremonial attire","Wed · Plenary I (formal white)"],
+      ["White Ceremonial attire","Wed · Plenary I (formal white) — with white stockings"],
       ["Purple outfit","Thu · Associates Breakfast, Luncheon & Plenaries (Associate signature color)"],
       ["Gray outfit with a pop of pink","Fri · Programming Luncheon"],
       ["Green, Soft Lilac & Yellow outfit","Sat · Regional Breakfast"],
-      ["White Ceremonial / Sunday's Best","Sun · Memorial & Gospel Breakfast"]
+      ["White Ceremonial / Sunday's Best","Sun · Memorial & Gospel Breakfast — with white stockings"]
     ]},
     {cat:"Evening, Themed & Activities", items:[
       ["90s House Party outfit","Wed · bright colors / windbreakers / hip-hop"],
